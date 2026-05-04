@@ -1,26 +1,47 @@
 {
-  "metadata": {
-    "agent": "support-bot",
-    "ticket": "INC-2241"
-  },
-  "events": [
-    {
-      "action": "planner",
-      "input": {"query": "summarize outage"},
-      "output": {"plan": "gather telemetry"},
-      "state_patch": {"phase": "planning", "steps": 1}
+    "metadata": {
+        "agent": "support-bot",
+        "ticket": "INC-2241"
     },
-    {
-      "action": "retriever",
-      "input": {"source": "incident-db"},
-      "output": {"docs": 5},
-      "state_patch": {"phase": "retrieval", "docs": 5}
-    },
-    {
-      "action": "responder",
-      "input": {"style": "executive"},
-      "output": {"answer": "incident mitigated"},
-      "state_patch": {"phase": "answering", "status": "mitigated"}
-    }
-  ]
+    "events": [
+        {
+            "action": "planner",
+            "input": {
+                "query": "summarize outage"
+            },
+            "output": {
+                "plan": "gather telemetry"
+            },
+            "state_patch": {
+                "phase": "planning",
+                "steps": 1
+            }
+        },
+        {
+            "action": "retriever",
+            "input": {
+                "source": "incident-db"
+            },
+            "output": {
+                "docs": 5
+            },
+            "state_patch": {
+                "phase": "retrieval",
+                "docs": 5
+            }
+        },
+        {
+            "action": "responder",
+            "input": {
+                "style": "executive"
+            },
+            "output": {
+                "answer": "incident mitigated"
+            },
+            "state_patch": {
+                "phase": "answering",
+                "status": "mitigated"
+            }
+        }
+    ]
 }

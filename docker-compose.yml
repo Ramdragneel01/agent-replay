@@ -1,0 +1,19 @@
+services:
+  agent-replay:
+    build: .
+    image: ghcr.io/ramdragneel01/agent-replay:dev
+    container_name: agent-replay
+    restart: unless-stopped
+    ports:
+      - "8095:8095"
+    environment:
+      AR_HOST: 0.0.0.0
+      AR_PORT: 8095
+      AR_LOG_LEVEL: INFO
+      AR_FRONTEND_DIR: frontend
+      AR_MAX_EVENTS_PER_RUN: 5000
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://127.0.0.1:8095/health',timeout=3).status==200 else 1)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3

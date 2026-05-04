@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agent-replay"
+version = "0.1.0"
+description = "Time-travel debugger for agent runs with replay timeline APIs."
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.10"
+authors = [{ name = "Ram Prakash Dhulipudi", email = "ramprakashdhulipudi@gmail.com" }]
+dependencies = [
+  "fastapi==0.115.0",
+  "uvicorn[standard]==0.30.6",
+  "pydantic>=2.12.0,<3",
+  "pydantic-settings>=2.11.0,<3",
+  "structlog==24.4.0",
+  "prometheus-client==0.20.0"
+]
+
+[project.scripts]
+agent-replay = "agent_replay.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+ignore = ["E501"]

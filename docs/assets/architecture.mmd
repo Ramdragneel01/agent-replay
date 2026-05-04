@@ -1,0 +1,12 @@
+flowchart LR
+  C[Client / UI]
+  API[FastAPI Service]
+  S[InMemoryRunStore]
+  R[Replay Engine]
+  M[Prometheus Metrics]
+
+  C --> API
+  API --> S
+  API --> R
+  R --> S
+  API --> M

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agent Replay UI</title>
+    <link rel="stylesheet" href="/ui/styles.css" />
+  </head>
+  <body>
+    <main>
+      <header>
+        <p class="eyebrow">Time-Travel Agent Debugger</p>
+        <h1>Agent Replay</h1>
+        <p>Load a run id, scrub timeline steps, and inspect state snapshots step-by-step.</p>
+      </header>
+
+      <section class="panel controls">
+        <label>
+          Run ID
+          <input id="run-id" placeholder="paste run id" />
+        </label>
+        <button id="load">Load Timeline</button>
+        <button id="seed">Create Demo Run</button>
+      </section>
+
+      <section class="panel">
+        <div class="timeline-row">
+          <label for="step-slider">Timeline</label>
+          <input id="step-slider" type="range" min="0" max="0" value="0" />
+          <span id="step-label">step: 0</span>
+        </div>
+
+        <div class="actions">
+          <button id="play-forward">Replay Forward</button>
+          <button id="play-reverse">Replay Reverse</button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Current Frame</h2>
+        <pre id="frame">{}</pre>
+      </section>
+
+      <section class="panel">
+        <h2>Run Metadata</h2>
+        <pre id="meta">{}</pre>
+      </section>
+    </main>
+
+    <script type="module" src="/ui/app.js"></script>
+  </body>
+</html>
